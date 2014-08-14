@@ -519,7 +519,7 @@ year,origin,dest,status,COUNT,origin_enrolled,adj_count
 2010,HTH,SOH,Denied,2,2205,90
 2010,HTH,SUH,Approved,10,2205,453
 2010,HTH,SYH,Approved,5,2205,226
-2010,HTM,BVM, Approved,1,1129,88
+2010,HTM,BVM,Approved,1,1129,88
 2010,HTM,BVM,Approved,16,1129,1417
 2010,HTM,BVM,Denied,10,1129,885
 2010,HTM,BVM,Pending,1,1129,88
