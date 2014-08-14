@@ -1,0 +1,144 @@
+DIR: sweetwater_transfers_enrollment
+DATABASE: sqlite:sweetwater.db 
+PUBLICATION: s3://warehouse.sandiegodata.org/voiceofsandiego.org#compress
+TITLE: Sweetwater Union High School Transfers
+ACCESS: public
+UID: d756fd2e-1480-4e30-a355-5e8abe46358b
+
+These views combine the counts of transfers between schools in the Sweetwater Union School District with enrollment statistics for the schools. The three resulting files present the counts adjusted for the population of either the origin or destination school. 
+
+# Files
+
+EXTRACT: d02V002_swtransfers AS csv TO sweetwater_transfers.csv
+EXTRACT: adjusted_transfers AS csv TO adjusted_transfers.csv
+EXTRACT: adjusted_arrivals AS csv TO adjusted_arrivals.csv
+EXTRACT: adjusted_departures AS csv TO adjusted_departures.csv
+
+PARTITIONS:
+
+sweetwaterschools.org-transfers-2008e2015-swtransfers
+cde.ca.gov-schools-combined-public_schools
+cde.ca.gov-enrollment-1993e-enroll09
+
+MVIEW: sweet_schools
+
+SELECT * 
+FROM d00a001_public_schools AS schools
+JOIN d02W001_enroll09 AS enroll ON enroll.cds_code = schools.cdscode
+JOIN d02V002_code_cross AS codes on codes.cdscode = schools.cdscode
+WHERE ncesdist = 638640
+
+DOC: 
+
+Sweetwater schools, with the enrollment for each demographic category. `ncesdist = 638640` selects the Sweetwater high school district.
+
+
+VIEW: sweet_enroll
+
+SELECT 
+cds_code, year,  sum(enr_total) as total_enroll, school, eilcode,
+latitude, longitude, 
+code as trans_code
+FROM sweet_schools 
+GROUP BY year, cds_code ;
+
+DOC:
+
+Total enrollment at the sweetwater schools, by year. The enrollment is collapsed across all deographic categories. 
+
+
+VIEW: trans_counts
+
+SELECT 
+year, origin, dest, status, count(*) as count
+FROM d02V002_swtransfers
+GROUP BY year, origin, dest, status;
+
+DOC:
+
+Sums of transfer counts, aggregated for each year, origin, destination and status. 
+
+VIEW: arrivals
+
+SELECT 
+year, dest, status, CAST(count(*) as INTEGER) as count
+FROM d02V002_swtransfers
+GROUP BY year, dest, status
+ORDER BY year, dest, status;
+
+DOC: 
+
+Counts for all arrivals from a school
+
+VIEW: departures 
+
+SELECT 
+year, origin, status, CAST(count(*)  as INTEGER) as count
+FROM d02V002_swtransfers
+GROUP BY year, origin, status;
+
+DOC: 
+
+Counts for all departures from a school
+
+
+
+VIEW: adjusted_transfers
+
+SELECT  
+    trans_counts.year, 
+    origin, 
+    dest, 
+    status, 
+    origin_enroll.total_enroll as origin_enrolled,
+    count,
+    CAST( (CAST(count AS FLOAT)/CAST(origin_enroll.total_enroll AS FLOAT))* 100000 AS INTEGER ) AS origin_adj_count,
+    dest_enroll.total_enroll as dest_enrolled,
+    origin_enroll.school as origin_name, 
+    dest_enroll.school as dest_name
+FROM trans_counts
+JOIN sweet_enroll as origin_enroll ON origin_enroll.trans_code = origin  AND trans_counts.year = origin_enroll.year
+JOIN sweet_enroll as dest_enroll   ON dest_enroll.trans_code = dest    AND trans_counts.year = dest_enroll.year
+;
+
+DOC: 
+
+Transfer numbers expressed as the rate per 100,000 students at the origin school
+
+VIEW: adjusted_arrivals
+
+SELECT  
+    arrivals.year, 
+    dest, 
+    status, 
+    dest_enroll.total_enroll as enrolled,
+    count,
+    CAST( (CAST(count AS FLOAT)/CAST(dest_enroll.total_enroll AS FLOAT))* 100000 AS INTEGER ) AS dest_adj_count,
+    dest_enroll.total_enroll as dest_enrolled,
+    dest_enroll.school as name
+FROM arrivals
+JOIN sweet_enroll as dest_enroll   ON dest_enroll.trans_code = dest    AND arrivals.year = dest_enroll.year
+;
+
+DOC: 
+
+Arrivals to a school, expressed as the rate per 100,000 students at the destination school
+
+VIEW: adjusted_departures
+
+SELECT  
+    departures.year, 
+    origin, 
+    status, 
+    origin_enroll.total_enroll as enrolled,
+    count,
+    CAST( (CAST(count AS FLOAT)/CAST(origin_enroll.total_enroll AS FLOAT))* 100000 AS INTEGER ) AS origin_adj_count,
+    origin_enroll.total_enroll as origin_enrolled,
+    origin_enroll.school as name
+FROM departures
+JOIN sweet_enroll as origin_enroll   ON origin_enroll.trans_code = origin    AND departures.year = origin_enroll.year
+;
+
+DOC: 
+
+Departures from a school, expressed as the rate per 100,000 students at the origin school
