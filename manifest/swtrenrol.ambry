@@ -9,10 +9,13 @@ These views combine the counts of transfers between schools in the Sweetwater Un
 
 # Files
 
+The `sweet_schools` table has a mapping between the three letter codes used in the transfer data and the offician CDS code. 
+
 EXTRACT: d02V002_swtransfers AS csv TO sweetwater_transfers.csv
 EXTRACT: adjusted_transfers AS csv TO adjusted_transfers.csv
 EXTRACT: adjusted_arrivals AS csv TO adjusted_arrivals.csv
 EXTRACT: adjusted_departures AS csv TO adjusted_departures.csv
+EXTRACT: sweet_schools AS csv TO sweetwater_schools.csv
 
 PARTITIONS:
 
@@ -22,7 +25,44 @@ cde.ca.gov-enrollment-1993e-enroll09
 
 MVIEW: sweet_schools
 
-SELECT * 
+SELECT 
+schools.id as public_school_id,
+schools.cdscode,
+code as trans_code,
+ncesdist,
+ncesschool,
+statustype,
+schools.county,
+schools.district,
+schools.school,
+street,
+streetabr,
+city,
+schools.zip,
+schools.state,
+latitude,
+longitude,
+enroll.id as enroll_id,
+year as enroll_year,
+ethnic,
+gender,
+kdgn,
+gr_1,
+gr_2,
+gr_3,
+gr_4,
+gr_5,
+gr_6,
+gr_7,
+gr_8,
+ungr_elm,
+gr_9,
+gr_10,
+gr_11,
+gr_12,
+ungr_sec,
+enr_total,
+adult
 FROM d00a001_public_schools AS schools
 JOIN d02W001_enroll09 AS enroll ON enroll.cds_code = schools.cdscode
 JOIN d02V002_code_cross AS codes on codes.cdscode = schools.cdscode
@@ -36,11 +76,11 @@ Sweetwater schools, with the enrollment for each demographic category. `ncesdist
 VIEW: sweet_enroll
 
 SELECT 
-cds_code, year,  sum(enr_total) as total_enroll, school, eilcode,
+cdscode, enroll_year,  sum(enr_total) as total_enroll, school, 
 latitude, longitude, 
-code as trans_code
+trans_code
 FROM sweet_schools 
-GROUP BY year, cds_code ;
+GROUP BY enroll_year, cdscode ;
 
 DOC:
 
@@ -97,8 +137,8 @@ SELECT
     origin_enroll.school as origin_name, 
     dest_enroll.school as dest_name
 FROM trans_counts
-JOIN sweet_enroll as origin_enroll ON origin_enroll.trans_code = origin  AND trans_counts.year = origin_enroll.year
-JOIN sweet_enroll as dest_enroll   ON dest_enroll.trans_code = dest    AND trans_counts.year = dest_enroll.year
+JOIN sweet_enroll as origin_enroll ON origin_enroll.trans_code = origin  AND trans_counts.year = origin_enroll.enroll_year
+JOIN sweet_enroll as dest_enroll   ON dest_enroll.trans_code = dest    AND trans_counts.year = dest_enroll.enroll_year
 ;
 
 DOC: 
@@ -117,7 +157,7 @@ SELECT
     dest_enroll.total_enroll as dest_enrolled,
     dest_enroll.school as name
 FROM arrivals
-JOIN sweet_enroll as dest_enroll   ON dest_enroll.trans_code = dest    AND arrivals.year = dest_enroll.year
+JOIN sweet_enroll as dest_enroll   ON dest_enroll.trans_code = dest    AND arrivals.year = dest_enroll.enroll_year
 ;
 
 DOC: 
@@ -136,7 +176,7 @@ SELECT
     origin_enroll.total_enroll as origin_enrolled,
     origin_enroll.school as name
 FROM departures
-JOIN sweet_enroll as origin_enroll   ON origin_enroll.trans_code = origin    AND departures.year = origin_enroll.year
+JOIN sweet_enroll as origin_enroll   ON origin_enroll.trans_code = origin    AND departures.year = origin_enroll.enroll_year
 ;
 
 DOC: 
