@@ -1,5 +1,5 @@
 DIR: sweetwater_transfers_enrollment
-DATABASE: sqlite:sweetwater.db 
+DATABASE: spatialite:sweetwater.db 
 PUBLICATION: s3://warehouse.sandiegodata.org/voiceofsandiego.org#compress
 TITLE: Sweetwater Union High School Transfers
 ACCESS: public
@@ -11,17 +11,30 @@ These views combine the counts of transfers between schools in the Sweetwater Un
 
 The `sweet_schools` table has a mapping between the three letter codes used in the transfer data and the offician CDS code. 
 
-EXTRACT: d02V002_swtransfers AS csv TO sweetwater_transfers.csv
+EXTRACT: d02V003_swtransfers AS csv TO sweetwater_transfers.csv
 EXTRACT: adjusted_transfers AS csv TO adjusted_transfers.csv
 EXTRACT: adjusted_arrivals AS csv TO adjusted_arrivals.csv
 EXTRACT: adjusted_departures AS csv TO adjusted_departures.csv
 EXTRACT: sweet_schools AS csv TO sweetwater_schools.csv
+EXTRACT: d02y003_sws_boundaries AS shapefile to school_boundaries
+EXTRACT: d02y003_sws_boundaries AS geojson to school_boundaries.geojson
+EXTRACT: school_blockgroups AS geojson to school_blockgroups.geojson
+EXTRACT: school_blockgroups AS kml to school_blockgroups.kml
+EXTRACT: d025004_blockgroups AS kml to all_blockgroups.kml
+EXTRACT: mean_income_by_school AS csv TO mean_income_by_school.csv
+
 
 PARTITIONS:
 
 sweetwaterschools.org-transfers-2008e2015-swtransfers
+sweetwaterschools.org-boundaries-sws_boundaries-geo
+sweetwaterschools.org-boundaries-acs_cross
 cde.ca.gov-schools-combined-public_schools
 cde.ca.gov-enrollment-1993e-enroll09
+blockgroups FROM census.gov-tigerline-2012-blockgroups-ca-geo-0.0.4 WHERE where countyfp = 73
+census.gov-acs-geo-p5ye2012-geofile-0.0.3
+census.gov-acs-p5ye2012-b01003-estimates-0.0.4 # Total Population
+census.gov-acs-p5ye2012-b19001-estimates-0.0.4 # Household Income In The Past 12 Months (In 2012 Inflation-Adjusted Dollars)
 
 MVIEW: sweet_schools
 
@@ -65,7 +78,7 @@ enr_total,
 adult
 FROM d00a001_public_schools AS schools
 JOIN d02W001_enroll09 AS enroll ON enroll.cds_code = schools.cdscode
-JOIN d02V002_code_cross AS codes on codes.cdscode = schools.cdscode
+JOIN d02V003_code_cross AS codes on codes.cdscode = schools.cdscode
 WHERE ncesdist = 638640
 
 DOC: 
@@ -91,7 +104,7 @@ VIEW: trans_counts
 
 SELECT 
 year, origin, dest, status, count(*) as count
-FROM d02V002_swtransfers
+FROM d02V003_swtransfers
 GROUP BY year, origin, dest, status;
 
 DOC:
@@ -102,7 +115,7 @@ VIEW: arrivals
 
 SELECT 
 year, dest, status, CAST(count(*) as INTEGER) as count
-FROM d02V002_swtransfers
+FROM d02V003_swtransfers
 GROUP BY year, dest, status
 ORDER BY year, dest, status;
 
@@ -114,7 +127,7 @@ VIEW: departures
 
 SELECT 
 year, origin, status, CAST(count(*)  as INTEGER) as count
-FROM d02V002_swtransfers
+FROM d02V003_swtransfers
 GROUP BY year, origin, status;
 
 DOC: 
@@ -182,3 +195,70 @@ JOIN sweet_enroll as origin_enroll   ON origin_enroll.trans_code = origin    AND
 DOC: 
 
 Departures from a school, expressed as the rate per 100,000 students at the origin school
+
+MVIEW: school_blockgroups
+
+SELECT *
+FROM d02y003_acs_cross AS acs_cross
+JOIN d025004_blockgroups AS bg ON acs_cross.geoid = bg.geoid
+JOIN d02V003_code_cross AS codes ON codes.boundary_id = acs_cross.sws_boundaries_id
+
+VIEW: acs_income
+
+SELECT 
+    geo.geoid,
+    b19001001 as total_households,
+    ((b19001002 * (0 + 10000) / 2 ) +
+    (b19001003 * (10000 + 14999) / 2 ) +
+    (b19001004 * (15000 + 19999) / 2 ) +
+    (b19001005 * (20000 + 24999) / 2 ) +
+    (b19001006 * (25000 + 29999) / 2 ) +
+    (b19001007 * (30000 + 34999) / 2 ) +
+    (b19001008 * (35000 + 39999) / 2 ) +
+    (b19001009 * (40000 + 44999) / 2 ) +
+    (b19001010 * (45000 + 49999) / 2 ) +
+    (b19001011 * (50000 + 59999) / 2 ) +
+    (b19001012 * (60000 + 74999) / 2 ) +
+    (b19001013 * (75000 + 99999) / 2 ) +
+    (b19001014 * (100000 + 124999) / 2 ) +
+    (b19001015 * (125000 + 149999) / 2 ) +
+    (b19001016 * (150000 + 199999) / 2 ) +
+    (b19001017 * (200000) )) AS total_income
+FROM d02G003_geofile AS geo
+JOIN d024004_b19001_estimates AS b19001 ON geo.stusab = b19001.stusab AND geo.logrecno = b19001.logrecno
+WHERE geo.sumlevel = 150;
+
+VIEW: mean_income_by_school
+
+SELECT
+    cdscode, name, total_households, total_income/total_households AS mean_income
+FROM (
+    SELECT 
+        school_blockgroups.cdscode, school_blockgroups.name,
+        sum(CAST(acs_income.total_income AS FLOAT)) AS total_income,
+        sum(CAST(acs_income.total_households AS FLOAT)) AS total_households
+    FROM d02G003_geofile AS geo
+    JOIN d024004_b19001_estimates AS b19001 ON geo.stusab = b19001.stusab AND geo.logrecno = b19001.logrecno
+    JOIN acs_income ON acs_income.geoid = geo.geoid
+    JOIN school_blockgroups ON '15000US' || school_blockgroups.geoid = geo.geoid
+    WHERE geo.sumlevel = 150
+    GROUP BY cdscode 
+)
+ORDER BY mean_income DESC
+;
+
+VIEW: acs
+
+SELECT 
+    geo.geoid, geo.county, geo.state, geo.name, geo.stusab, geo.logrecno, 
+    b01003e.*, 
+    school_blockgroups.geometry, school_blockgroups.cdscode, school_blockgroups.name,
+    b01003001 as total_population,
+
+    CAST(CAST(acs_income.total_income AS FLOAT) /  CAST(acs_income.total_households AS FLOAT) AS FLOAT) AS mean_income
+FROM d02G003_geofile AS geo
+JOIN d024004_b01003_estimates AS b01003e ON geo.stusab = b01003e.stusab AND geo.logrecno = b01003e.logrecno
+JOIN d024004_b19001_estimates AS b19001 ON geo.stusab = b19001.stusab AND geo.logrecno = b19001.logrecno
+JOIN acs_income ON acs_income.geoid = geo.geoid
+JOIN school_blockgroups ON '15000US' || school_blockgroups.geoid = geo.geoid
+WHERE geo.sumlevel = 150;
