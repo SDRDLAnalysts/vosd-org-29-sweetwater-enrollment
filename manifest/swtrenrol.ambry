@@ -5,23 +5,38 @@ TITLE: Sweetwater Union High School Transfers
 ACCESS: public
 UID: d756fd2e-1480-4e30-a355-5e8abe46358b
 
-These views combine the counts of transfers between schools in the Sweetwater Union School District with enrollment statistics for the schools. The three resulting files present the counts adjusted for the population of either the origin or destination school. 
-
+These views combine the counts of transfers between schools in the Sweetwater Union School District with enrollment statistics for the schools.  
 # Files
 
-The `sweet_schools` table has a mapping between the three letter codes used in the transfer data and the offician CDS code. 
+The `sweetwater_transfers.csv` file has all of the transfers. 
 
 EXTRACT: d02V003_swtransfers AS csv TO sweetwater_transfers.csv
+
+These three files aggregate to the counts of transfer requests by status, and also present the counts adjusted for the population of either the origin or destination school. 
+
 EXTRACT: adjusted_transfers AS csv TO adjusted_transfers.csv
 EXTRACT: adjusted_arrivals AS csv TO adjusted_arrivals.csv
 EXTRACT: adjusted_departures AS csv TO adjusted_departures.csv
+
+The `sweet_schools` table has a mapping between the three letter codes used in the transfer data and the offician CDS code. 
+
 EXTRACT: sweet_schools AS csv TO sweetwater_schools.csv
+
+`Mean_income_by_school` presents the mean household income for the ACS 2012 blockgroups that intersect each school 
+enrollment area. 
+
+EXTRACT: mean_income_by_school AS csv TO mean_income_by_school.csv
+
+# Geographic Files
+
+These are support files for the school enrollment boundaries and ACS blockgroups
+
 EXTRACT: d02y003_sws_boundaries AS shapefile to school_boundaries
 EXTRACT: d02y003_sws_boundaries AS geojson to school_boundaries.geojson
 EXTRACT: school_blockgroups AS geojson to school_blockgroups.geojson
 EXTRACT: school_blockgroups AS kml to school_blockgroups.kml
 EXTRACT: d025004_blockgroups AS kml to all_blockgroups.kml
-EXTRACT: mean_income_by_school AS csv TO mean_income_by_school.csv
+
 
 
 PARTITIONS:
