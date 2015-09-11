@@ -1,0 +1,237 @@
+year,dest,status,enrolled,COUNT,dest_adj_count,dest_enrolled,name
+2009,BVH,Approved,2368,191,8065,2368,Bonita Vista Senior High
+2009,BVH,Denied,2368,61,2576,2368,Bonita Vista Senior High
+2009,BVH,Pending,2368,2,84,2368,Bonita Vista Senior High
+2009,BVM,Approved,1075,145,13488,1075,Bonita Vista Middle
+2009,BVM,Denied,1075,42,3906,1075,Bonita Vista Middle
+2009,BVM,Pending,1075,6,558,1075,Bonita Vista Middle
+2009,CPH,Approved,1579,212,13426,1579,Castle Park Senior High
+2009,CPH,Denied,1579,4,253,1579,Castle Park Senior High
+2009,CPH,Pending,1579,1,63,1579,Castle Park Senior High
+2009,CPM,Approved,1096,73,6660,1096,Castle Park Middle
+2009,CPM,Denied,1096,2,182,1096,Castle Park Middle
+2009,CPM,Pending,1096,1,91,1096,Castle Park Middle
+2009,CVH,Approved,2662,99,3719,2662,Chula Vista Senior High
+2009,CVH,Denied,2662,40,1502,2662,Chula Vista Senior High
+2009,CVH,Pending,2662,2,75,2662,Chula Vista Senior High
+2009,CVM,Approved,1165,139,11931,1165,Chula Vista Middle
+2009,CVM,Denied,1165,48,4120,1165,Chula Vista Middle
+2009,CVM,Pending,1165,3,257,1165,Chula Vista Middle
+2009,ELH,Approved,2467,201,8147,2467,Eastlake High
+2009,ELH,Denied,2467,55,2229,2467,Eastlake High
+2009,ELH,Pending,2467,1,40,2467,Eastlake High
+2009,ELM,Approved,1581,57,3605,1581,Eastlake Middle
+2009,ELM,Denied,1581,51,3225,1581,Eastlake Middle
+2009,GJH,Approved,1079,55,5097,1079,Granger Junior High
+2009,GJH,Denied,1079,4,370,1079,Granger Junior High
+2009,HTH,Approved,2318,178,7679,2318,Hilltop Senior High
+2009,HTH,Denied,2318,30,1294,2318,Hilltop Senior High
+2009,HTH,Pending,2318,3,129,2318,Hilltop Senior High
+2009,HTM,Approved,1189,188,15811,1189,Hilltop Middle
+2009,HTM,Denied,1189,85,7148,1189,Hilltop Middle
+2009,MOH,Approved,1716,345,20104,1716,Montgomery Senior High
+2009,MOH,Denied,1716,14,815,1716,Montgomery Senior High
+2009,MOH,Pending,1716,2,116,1716,Montgomery Senior High
+2009,MOM,Approved,946,58,6131,946,Montgomery Middle
+2009,MOM,Denied,946,14,1479,946,Montgomery Middle
+2009,MVH,Approved,1775,87,4901,1775,Mar Vista Senior High
+2009,MVH,Denied,1775,6,338,1775,Mar Vista Senior High
+2009,MVM,Approved,1081,38,3515,1081,Mar Vista Academy for Problem Based Learning
+2009,MVM,Denied,1081,25,2312,1081,Mar Vista Academy for Problem Based Learning
+2009,NCM,Approved,793,74,9331,793,National City Middle
+2009,NCM,Denied,793,17,2143,793,National City Middle
+2009,NCM,Pending,793,1,126,793,National City Middle
+2009,OLH,Approved,1565,320,20447,1565,Olympian High
+2009,OLH,Denied,1565,7,447,1565,Olympian High
+2009,ORH,Approved,2705,418,15452,2705,Otay Ranch Senior High
+2009,ORH,Denied,2705,7,258,2705,Otay Ranch Senior High
+2009,ORH,Pending,2705,1,36,2705,Otay Ranch Senior High
+2009,RDM,Approved,1672,186,11124,1672,Rancho del Rey Middle
+2009,RDM,Denied,1672,121,7236,1672,Rancho del Rey Middle
+2009,RDM,Pending,1672,2,119,1672,Rancho del Rey Middle
+2009,SAILS,Pending,297,1,336,297,Options Secondary
+2009,SOH,Approved,1739,146,8395,1739,Southwest Senior High
+2009,SOH,Denied,1739,16,920,1739,Southwest Senior High
+2009,SOM,Approved,711,30,4219,711,Southwest Middle
+2009,SOM,Denied,711,11,1547,711,Southwest Middle
+2009,SUH,Approved,2456,94,3827,2456,Sweetwater High
+2009,SUH,Denied,2456,16,651,2456,Sweetwater High
+2009,SYH,Approved,2392,325,13586,2392,San Ysidro High
+2009,SYH,Denied,2392,22,919,2392,San Ysidro High
+2009,SYH,Pending,2392,3,125,2392,San Ysidro High
+2010,BVH,Approved,2266,191,8428,2266,Bonita Vista Senior High
+2010,BVH,Denied,2266,47,2074,2266,Bonita Vista Senior High
+2010,BVH,Pending,2266,6,264,2266,Bonita Vista Senior High
+2010,BVM, Approved,1134,1,88,1134,Bonita Vista Middle
+2010,BVM,Approved,1134,129,11375,1134,Bonita Vista Middle
+2010,BVM,Denied,1134,52,4585,1134,Bonita Vista Middle
+2010,BVM,Pending,1134,1,88,1134,Bonita Vista Middle
+2010,CPH,Approved,1579,168,10639,1579,Castle Park Senior High
+2010,CPH,Denied,1579,6,379,1579,Castle Park Senior High
+2010,CPH,Pending,1579,2,126,1579,Castle Park Senior High
+2010,CPM,Approved,1052,91,8650,1052,Castle Park Middle
+2010,CPM,Denied,1052,1,95,1052,Castle Park Middle
+2010,CVH,Approved,2670,158,5917,2670,Chula Vista Senior High
+2010,CVH,Denied,2670,69,2584,2670,Chula Vista Senior High
+2010,CVH,Pending,2670,1,37,2670,Chula Vista Senior High
+2010,CVM,Approved,1191,229,19227,1191,Chula Vista Middle
+2010,CVM,Denied,1191,15,1259,1191,Chula Vista Middle
+2010,CVM,Pending,1191,2,167,1191,Chula Vista Middle
+2010,ELH,Approved,2519,322,12782,2519,Eastlake High
+2010,ELH,Denied,2519,58,2302,2519,Eastlake High
+2010,ELH,Pending,2519,4,158,2519,Eastlake High
+2010,ELM,Approved,1602,50,3121,1602,Eastlake Middle
+2010,ELM,Denied,1602,72,4494,1602,Eastlake Middle
+2010,GJH,Approved,1033,72,6969,1033,Granger Junior High
+2010,GJH,Denied,1033,1,96,1033,Granger Junior High
+2010,HTH,Approved,2205,163,7392,2205,Hilltop Senior High
+2010,HTH,Denied,2205,41,1859,2205,Hilltop Senior High
+2010,HTH,Pending,2205,4,181,2205,Hilltop Senior High
+2010,HTM,Approved,1129,244,21612,1129,Hilltop Middle
+2010,HTM,Denied,1129,1,88,1129,Hilltop Middle
+2010,HTM,Pending,1129,7,620,1129,Hilltop Middle
+2010,MOH,Approved,1637,398,24312,1637,Montgomery Senior High
+2010,MOH,Denied,1637,14,855,1637,Montgomery Senior High
+2010,MOH,Pending,1637,2,122,1637,Montgomery Senior High
+2010,MOM,Approved,886,60,6772,886,Montgomery Middle
+2010,MOM,Denied,886,1,112,886,Montgomery Middle
+2010,MOM,Pending,886,1,112,886,Montgomery Middle
+2010,MVH,Approved,1697,164,9664,1697,Mar Vista Senior High
+2010,MVH,Denied,1697,6,353,1697,Mar Vista Senior High
+2010,MVM,Approved,1061,45,4241,1061,Mar Vista Academy for Problem Based Learning
+2010,MVM,Denied,1061,3,282,1061,Mar Vista Academy for Problem Based Learning
+2010,MVM,Pending,1061,6,565,1061,Mar Vista Academy for Problem Based Learning
+2010,NCM,Approved,731,67,9165,731,National City Middle
+2010,NCM,Denied,731,1,136,731,National City Middle
+2010,OLH,Approved,1732,650,37528,1732,Olympian High
+2010,OLH,Denied,1732,47,2713,1732,Olympian High
+2010,ORH,Approved,2721,270,9922,2721,Otay Ranch Senior High
+2010,ORH,Denied,2721,80,2940,2721,Otay Ranch Senior High
+2010,ORH,Pending,2721,1,36,2721,Otay Ranch Senior High
+2010,RDM,Approved,1633,123,7532,1633,Rancho del Rey Middle
+2010,RDM,Denied,1633,123,7532,1633,Rancho del Rey Middle
+2010,RDM,Pending,1633,2,122,1633,Rancho del Rey Middle
+2010,SOH,Approved,1718,99,5762,1718,Southwest Senior High
+2010,SOH,Denied,1718,19,1105,1718,Southwest Senior High
+2010,SOM,Approved,635,60,9448,635,Southwest Middle
+2010,SUH,Approved,2440,144,5901,2440,Sweetwater High
+2010,SUH,Denied,2440,5,204,2440,Sweetwater High
+2010,SUH,Pending,2440,1,40,2440,Sweetwater High
+2010,SYH,Approved,2464,328,13311,2464,San Ysidro High
+2010,SYH,Denied,2464,4,162,2464,San Ysidro High
+2010,SYH,Pending,2464,5,202,2464,San Ysidro High
+2011,BVH,Approved,2307,161,6978,2307,Bonita Vista Senior High
+2011,BVH,Denied,2307,62,2687,2307,Bonita Vista Senior High
+2011,BVH,Pending,2307,1,43,2307,Bonita Vista Senior High
+2011,BVM,Approved,1080,218,20185,1080,Bonita Vista Middle
+2011,BVM,Denied,1080,3,277,1080,Bonita Vista Middle
+2011,CPH,Approved,1657,188,11345,1657,Castle Park Senior High
+2011,CPH,Denied,1657,1,60,1657,Castle Park Senior High
+2011,CPM,Approved,1023,86,8406,1023,Castle Park Middle
+2011,CVH,Approved,2698,170,6300,2698,Chula Vista Senior High
+2011,CVH,Denied,2698,3,111,2698,Chula Vista Senior High
+2011,CVM,Approved,1051,267,25404,1051,Chula Vista Middle
+2011,CVM,Denied,1051,1,95,1051,Chula Vista Middle
+2011,ELH,Approved,2692,322,11961,2692,Eastlake High
+2011,ELH,Denied,2692,9,334,2692,Eastlake High
+2011,ELM,Approved,1575,156,9904,1575,Eastlake Middle
+2011,GJH,Approved,1071,69,6442,1071,Granger Junior High
+2011,HTH,Approved,2106,274,13010,2106,Hilltop Senior High
+2011,HTH,Denied,2106,6,284,2106,Hilltop Senior High
+2011,HTM,Approved,1071,339,31652,1071,Hilltop Middle
+2011,HTM,Denied,1071,2,186,1071,Hilltop Middle
+2011,MOH,Approved,1680,433,25773,1680,Montgomery Senior High
+2011,MOH,Denied,1680,2,119,1680,Montgomery Senior High
+2011,MOM,Approved,864,107,12384,864,Montgomery Middle
+2011,MVH,Approved,1582,117,7395,1582,Mar Vista Senior High
+2011,MVH,Denied,1582,2,126,1582,Mar Vista Senior High
+2011,MVM,Approved,1063,66,6208,1063,Mar Vista Academy for Problem Based Learning
+2011,NCM,Approved,704,79,11221,704,National City Middle
+2011,OLH,Approved,1748,428,24485,1748,Olympian High
+2011,OLH,Denied,1748,6,343,1748,Olympian High
+2011,OLH,Pending,1748,2,114,1748,Olympian High
+2011,ORH,Approved,2654,649,24453,2654,Otay Ranch Senior High
+2011,ORH,Denied,2654,2,75,2654,Otay Ranch Senior High
+2011,RDM,Approved,1583,290,18319,1583,Rancho del Rey Middle
+2011,SAILS,Approved,256,1,390,256,Options Secondary
+2011,SOH,Approved,1675,280,16716,1675,Southwest Senior High
+2011,SOM,Approved,595,58,9747,595,Southwest Middle
+2011,SUH,Approved,2422,148,6110,2422,Sweetwater High
+2011,SUH,Denied,2422,2,82,2422,Sweetwater High
+2011,SYH,Approved,2364,280,11844,2364,San Ysidro High
+2011,SYH,Denied,2364,3,126,2364,San Ysidro High
+2011,SYH,Pending,2364,1,42,2364,San Ysidro High
+2012,BVH,Approved,2565,359,13996,2565,Bonita Vista Senior High
+2012,BVH,Denied,2565,2,77,2565,Bonita Vista Senior High
+2012,BVM,Approved,1051,231,21979,1051,Bonita Vista Middle
+2012,BVM,Denied,1051,3,285,1051,Bonita Vista Middle
+2012,CPH,Approved,1737,188,10823,1737,Castle Park Senior High
+2012,CPH,Denied,1737,1,57,1737,Castle Park Senior High
+2012,CPM,Approved,833,86,10324,833,Castle Park Middle
+2012,CVH,Approved,2935,170,5792,2935,Chula Vista Senior High
+2012,CVH,Denied,2935,3,102,2935,Chula Vista Senior High
+2012,CVM,Approved,1033,267,25847,1033,Chula Vista Middle
+2012,CVM,Denied,1033,1,96,1033,Chula Vista Middle
+2012,ELH,Approved,3025,322,10644,3025,Eastlake High
+2012,ELH,Denied,3025,9,297,3025,Eastlake High
+2012,ELM,Approved,1716,156,9090,1716,Eastlake Middle
+2012,GJH,Approved,1059,69,6515,1059,Granger Junior High
+2012,HTH,Approved,2226,271,12174,2226,Hilltop Senior High
+2012,HTH,Denied,2226,7,314,2226,Hilltop Senior High
+2012,HTM,Approved,1115,338,30313,1115,Hilltop Middle
+2012,HTM,Denied,1115,1,89,1115,Hilltop Middle
+2012,MOH,Approved,1828,433,23687,1828,Montgomery Senior High
+2012,MOH,Denied,1828,2,109,1828,Montgomery Senior High
+2012,MOM,Approved,872,107,12270,872,Montgomery Middle
+2012,MVH,Approved,1732,116,6697,1732,Mar Vista Senior High
+2012,MVH,Denied,1732,3,173,1732,Mar Vista Senior High
+2012,MVM,Approved,1011,66,6528,1011,Mar Vista Academy for Problem Based Learning
+2012,NCM,Approved,769,79,10273,769,National City Middle
+2012,OLH,Approved,1900,426,22421,1900,Olympian High
+2012,OLH,Denied,1900,7,368,1900,Olympian High
+2012,ORH,Approved,2789,647,23198,2789,Otay Ranch Senior High
+2012,ORH,Denied,2789,2,71,2789,Otay Ranch Senior High
+2012,RDM,Approved,1711,289,16890,1711,Rancho del Rey Middle
+2012,SAILS,Approved,200,1,500,200,Options Secondary
+2012,SOH,Approved,1827,279,15270,1827,Southwest Senior High
+2012,SOH,Pending,1827,1,54,1827,Southwest Senior High
+2012,SOM,Approved,641,57,8892,641,Southwest Middle
+2012,SUH,Approved,2833,145,5118,2833,Sweetwater High
+2012,SUH,Denied,2833,1,35,2833,Sweetwater High
+2012,SYH,Approved,2478,261,10532,2478,San Ysidro High
+2012,SYH,Denied,2478,2,80,2478,San Ysidro High
+2012,SYH,Pending,2478,2,80,2478,San Ysidro High
+2013,BVH,Approved,2397,181,7551,2397,Bonita Vista Senior High
+2013,BVH,Denied,2397,13,542,2397,Bonita Vista Senior High
+2013,BVM,Approved,1136,259,22799,1136,Bonita Vista Middle
+2013,BVM,Pending,1136,1,88,1136,Bonita Vista Middle
+2013,CPH,Approved,1629,118,7243,1629,Castle Park Senior High
+2013,CPM,Approved,842,35,4156,842,Castle Park Middle
+2013,CVH,Approved,2681,175,6527,2681,Chula Vista Senior High
+2013,CVM,Approved,996,180,18072,996,Chula Vista Middle
+2013,ELH,Approved,3040,225,7401,3040,Eastlake High
+2013,ELH,Denied,3040,13,427,3040,Eastlake High
+2013,ELM,Approved,1740,72,4137,1740,Eastlake Middle
+2013,ELM,Denied,1740,8,459,1740,Eastlake Middle
+2013,GJH,Approved,999,61,6106,999,Granger Junior High
+2013,HTH,Approved,2213,248,11206,2213,Hilltop Senior High
+2013,HTM,Approved,1171,319,27241,1171,Hilltop Middle
+2013,HTM,Denied,1171,1,85,1171,Hilltop Middle
+2013,MOH,Approved,1719,394,22920,1719,Montgomery Senior High
+2013,MOM,Approved,835,65,7784,835,Montgomery Middle
+2013,MVH,Approved,1670,115,6886,1670,Mar Vista Senior High
+2013,MVM,Approved,919,40,4352,919,Mar Vista Academy for Problem Based Learning
+2013,NCM,Approved,782,59,7544,782,National City Middle
+2013,NCM,Pending,782,1,127,782,National City Middle
+2013,OLH,Approved,2193,549,25034,2193,Olympian High
+2013,OLH,Denied,2193,6,273,2193,Olympian High
+2013,ORH,Approved,2685,432,16089,2685,Otay Ranch Senior High
+2013,ORH,Denied,2685,12,446,2685,Otay Ranch Senior High
+2013,RDM,Approved,1690,61,3609,1690,Rancho del Rey Middle
+2013,RDM,Denied,1690,10,591,1690,Rancho del Rey Middle
+2013,SOH,Approved,1750,212,12114,1750,Southwest Senior High
+2013,SOH,Pending,1750,1,57,1750,Southwest Senior High
+2013,SOM,Approved,654,64,9785,654,Southwest Middle
+2013,SUH,Approved,2751,177,6434,2751,Sweetwater High
+2013,SUH,Denied,2751,1,36,2751,Sweetwater High
+2013,SYH,Approved,2351,285,12122,2351,San Ysidro High

@@ -1,11 +1,13 @@
-DIR: sweetwater_transfers_enrollment
-DATABASE: spatialite:sweetwater.db 
-PUBLICATION: s3://warehouse.sandiegodata.org/voiceofsandiego.org#compress
 TITLE: Sweetwater Union High School Transfers
-ACCESS: public
 UID: d756fd2e-1480-4e30-a355-5e8abe46358b
+ACCESS: public
+DATABASE: spatialite:sweetwater_enrollment.db
+
+REMOTE: s3://warehouse.sandiegodata.org/voiceofsandiego.org#compress
+LOCAL: sweetwater_enrollment
 
 These views combine the counts of transfers between schools in the Sweetwater Union School District with enrollment statistics for the schools.  
+
 # Files
 
 The `sweetwater_transfers.csv` file has all of the transfers. 
